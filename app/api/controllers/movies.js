@@ -19,19 +19,7 @@ module.exports = {
       next(err);
     }
 
-    /*  movieModel.findById(req.params.movieId, function (err, movieInfo) {
-       if (err) {
-         next(err);
-       } else {
-         res.json({
-           status: "success",
-           message: "Movie found!!!",
-           data: {
-             movies: movieInfo
-           }
-         });
-       }
-     }); */
+
   },
   getAll: async function (req, res, next) {
     let moviesList = []; //letting an empty array list
@@ -60,27 +48,7 @@ module.exports = {
       next(err);
     }
 
-    /*   movieModel.find({}, function (err, movies) {
-       if (err) {
-         next(err);
-       } else {
-         for (let movie of movies) {
-           moviesList.push({
-             id: movie._id,
-             name: movie.name,
-             released_on: movie.released_on
-           });
-         }
-         res.json({
-           status: "success",
-           message: "Movies list found!!!",
-           data: {
-             movies: moviesList
-           }
-         }); 
 
-       }
-     }); */
   },
   updateById: async function (req, res, next) {
 
@@ -104,20 +72,6 @@ module.exports = {
       next(err); //sending error to route using next
     }
 
-    /*     movieModel.findByIdAndUpdate(req.params.movieId, {
-          name: req.body.name
-        }, function (err, movieInfo) {
-          if (err)
-            next(err);
-          else {
-            res.json({
-              status: "success",
-              message: "Movie updated successfully!!!",
-              data: null
-            });
-          }
-        });
-     */
   },
   deleteById: async function (req, res, next) {
 
@@ -141,17 +95,6 @@ module.exports = {
     } catch (error) {
       next(error); //sending error to route using next
     }
-    /*   movieModel.findByIdAndRemove(req.params.movieId, function (err, movieInfo) {
-        if (err)
-          next(err);
-        else {
-          res.json({
-            status: "success",
-            message: "Movie deleted successfully!!!",
-            data: null
-          });
-        }
-      }); */
   },
   create: async function (req, res, next) {
 
@@ -177,20 +120,5 @@ module.exports = {
     } catch (err) {
       next(err); //sending error to route
     }
-    /*
-    movieModel.create({
-      name: req.body.name,
-      released_on: req.body.released_on
-    }, function (err, result) {
-      if (err)
-        next(err);
-      else
-        res.json({
-          status: "success",
-          message: "Movie added successfully!!!",
-          data: null
-        });
-
-    });*/
   },
 }
