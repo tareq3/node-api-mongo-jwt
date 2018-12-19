@@ -5,14 +5,17 @@ const users = require("./routes/users");
 const bodyParser = require("body-parser");
 const mongoose = require("./config/database"); //database configuration
 var jwt = require("jsonwebtoken");
+
 const app = express();
 app.set("secretKey", "nodeRestApi"); // jwt secret token
+
 
 // connection to mongodb
 mongoose.connection.on(
   "error",
   console.error.bind(console, "MongoDB connection error:")
 );
+
 app.use(logger("dev"));
 app.use(
   bodyParser.urlencoded({
@@ -25,6 +28,7 @@ app.get("/", (req, res) => {
     tutorial: "Build REST API with node.js"
   });
 });
+
 
 // public route
 app.use("/users", users);
@@ -75,6 +79,17 @@ app.use((err, req, res, next) => {
     });
 });
 
-app.listen(3000, () => {
-  console.log("Node server listening on port 3000");
+
+
+
+/* ************* Start Listening **************** */
+app.set('port', (process.env.PORT || 5001));
+
+app.use(express.static(__dirname + '/public'));
+
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'))
 });
+
+
+
